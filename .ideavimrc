@@ -1,0 +1,95 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+set mapleader = " "
+nmap <space> <Leader>
+
+"" show relative numbers
+set number relativenumber
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+
+Plug 'tpope/vim-commentary'
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+""" My Mappings
+
+nmap <leader>K <Action>(MoveStatementUp)
+nmap <leader>J <Action>(MoveStatementDown)
+
+map <leader>z <Action>(ToggleDistractionFreeMode)
+
+map <leader>ff <Action>(GotoClass)
+map <leader>fr <Action>(RecentFiles)
+map <leader>fg <Action>(FindInPath)
+
+map <leader>E <Action>(SelectInProjectView)
+map <leader>e <Action>(ActivateProjectToolWindow)
+
+""" My Mappings: Code navigation
+map gs <Action>(GotoSuperMethod)
+map gi <Action>(GotoImplementation)
+map gu <Action>(GotoDeclaration)
+map gr <Action>(RecentFiles)
+map <leader>n <Action>(Switcher)
+map <C-o> <Action>(Back)
+map <leader>to <Action>(CloseAllEditorsButActive)
+"map <leader>gi <Action>(CollapseRegion)
+
+""" My Mappings: Debugging
+map <leader>dR <Action>(DebugClass)
+map <leader>dr <Action>(Debug)
+map <leader>dt <Action>(ToggleLineBreakpoint)
+map N <Action>(Resume)
+map E <Action>(StepInto)
+
+""" My Mappings: Code action
+map <leader>ca <Action>(ShowIntentionActions)
+map <leader>co <Action>(OptimizeImports)
+map <leader>cf <Action>(ReformatCode)
+map <leader>c/ <Action>(CommentByLineComment)
+map <leader>cr <Action>(RenameElement)
+
+"map <leader>cf <Action>(IntroduceVariable)
+
+"map <leader>gi <Action>(RunClass)
+"map <leader>gi <Action>(DebugClass)
+"map <leader>gi <Action>(ToggleLineBreakpoint)
+
+""" Pane navigation
+"map <leader>gi <Action>(MoveTabRight)
+"map <leader>gi <Action>(CloseAllEditorsButActive)
+"map <leader>gi <Action>(MoveEditorToOppositeTabGroup)
+map <C-/> <Action>(ActivateTerminalToolWindow)
+
+map <C-w>m <Action>(MoveTabRight)
+map <C-w>w <Action>(CloseAllEditorsButActive)
+map <C-w>o <Action>(MoveEditorToOppositeTabGroup)
+
+map <leader>s <Action>(SaveAll)
