@@ -63,8 +63,10 @@ map <leader>to <Action>(CloseAllEditorsButActive)
 "map <leader>gi <Action>(CollapseRegion)
 
 """ My Mappings: Debugging
-map <leader>dR <Action>(DebugClass)
-map <leader>dr <Action>(Debug)
+map <leader>dR <Action>(RunClass)
+map <leader>dr <Action>(Run)
+map <leader>dD <Action>(DebugClass)
+map <leader>dd <Action>(Debug)
 map <leader>dt <Action>(ToggleLineBreakpoint)
 map N <Action>(Resume)
 map E <Action>(StepInto)

@@ -16,7 +16,10 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
+#ZSH_THEME="jonathan"
+#ZSH_THEME="eastwood"
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -77,7 +80,14 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(
+    git
+    kubectl
+    docker
+    terraform
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,13 +96,13 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='vim'
+#if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+export EDITOR='vim'
 # fi
 
 # Compilation flags
@@ -105,60 +115,55 @@ export EDITOR='vim'
 #
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 
-# Command-line Fuzzy Finder
+# Dev Home
+export DEV="$HOME/Developer"
+
+# Command-line fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
-# NVM configs
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Colosls
+# Enabling Colorls
 source $(dirname $(gem which colorls))/tab_complete.sh
 alias lc='colorls -lA --sd'
 alias l='colorls -l --sd'
 alias la='lc'
 
-# NeoVim aliases
-# alias vim='nvim'
+# My aliases
 # alias vi='nvim'
-
-# my bin folder
-export PATH="$HOME/Developer/.apps/bin:$PATH"
-
-# go install binaries
-export PATH=$(go env GOPATH)/bin:$PATH
-
-# Flutter
-export PATH="$HOME/Developer/.apps/flutter/bin:$PATH"
-export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
-
-# Very important function
-function whatthecommit() {
-  curl --silent --fail https://whatthecommit.com/index.txt
-}
+# alias vim='nvim'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-[[ -s "/Users/pablobastidasv/.gvm/scripts/gvm" ]] && source "/Users/pablobastidasv/.gvm/scripts/gvm"
+# Custom scripts
+export PATH="$PATH:$DEV/apps/bin"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Go intalled binaries path
+export PATH=$(go env GOPATH)/bin:$PATH
 
-# My custom scripts
-#export PATH = "/Users/pablobastidasv/Developer/.apps/bin:$PATH"
-
-
+# VERY important
+function whatthecommit() { curl --silent --fail https://whatthecommit.com/index.txt }
 
 # pnpm
-export PNPM_HOME="/Users/pablobastidasv/Library/pnpm"
+export PNPM_HOME="/Users/pablobatidasv/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Works - Work environment configurations
+[[ ! -f ~/.work.zsh ]] || source ~/.work.zsh
+
+# dependency check api key
+NVD_API_KEY="0cffd2c3-678f-459b-b039-11ec34ea850b"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
