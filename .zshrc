@@ -159,11 +159,22 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# Android
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
+export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH
+
+# Flutter
+export PATH=$HOME/Developer/.apps/flutter/bin:$PATH
+
+# Dashmon
+export PATH=$HOME/.pub-cache/bin:$PATH
+
 # Works - Work environment configurations
 [[ ! -f ~/.work.zsh ]] || source ~/.work.zsh
 
-# dependency check api key
-NVD_API_KEY="0cffd2c3-678f-459b-b039-11ec34ea850b"
+# Personal secrets
+[[ ! -f ~/.secrets.zsh ]] || source ~/.secrets.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
