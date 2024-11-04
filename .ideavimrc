@@ -95,3 +95,8 @@ map <C-w>w <Action>(CloseAllEditorsButActive)
 map <C-w>o <Action>(MoveEditorToOppositeTabGroup)
 
 map <leader>s <Action>(SaveAll)
+
+nmap <C-j> <C-W>j
+nmap <C-l> <C-W>l
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
