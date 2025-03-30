@@ -96,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 #if [[ -n $SSH_CONNECTION ]]; then
@@ -124,11 +124,12 @@ export DEV="$HOME/Developer"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
-# Enabling Colorls
-source $(dirname $(gem which colorls))/tab_complete.sh
-alias lc='colorls -lA --sd'
-alias l='colorls -l --sd'
-alias la='lc'
+# Enabling colored ls
+#source $(dirname $(gem which colorls))/tab_complete.sh # Colorls specific
+alias ls='lsd'
+alias l='ls -l'
+alias la='l -a'
+alias lt='ls --tree'
 
 # My aliases
 # alias vi='nvim'

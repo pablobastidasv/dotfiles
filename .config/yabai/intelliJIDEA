@@ -1,9 +1,0 @@
-# check if there is exactly one window belonging to the process of the window that was just created
-echo "does window $YABAI_WINDOW_ID should be floated?"
-if yabai -m query --windows \
-    | jq -er "map(select(.id == $YABAI_WINDOW_ID).pid as \$pid | select(.pid == \$pid)) | length == 1" > /dev/null
-then
-    echo "floating $YABAI_WINDOW_ID"
-    # unfloat the window
-    yabai -m window "$YABAI_WINDOW_ID"  --toggle float  --grid 4:4:1:1:2:2
-fi
